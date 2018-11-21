@@ -1,0 +1,56 @@
+.show-color {
+  float: left;
+  height: 30px;
+  width: 30px;
+  overflow: hidden;
+  position: fixed;
+}
+
+.color-picker-container {
+  float: left;
+}
+
+.color-picker-text {
+  background-color: transparent;
+  font-size: 0.85em;
+  color: #4a4a4a;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid lightgray;
+  width: 100%;
+  padding: 0.5em 0;
+  margin-bottom: 2px;
+  transition: 250ms ease border-bottom-color;
+  padding-left: 33px;
+}
+
+.color-picker-text[disabled] {
+  border-style: dashed;
+  background: none;
+}
+.color-picker-text:not([readonly]):focus {
+  outline: 0;
+  border-bottom-color: #0098c7;
+  border-width: 3px;
+  margin-bottom: 0;
+}
+
+.color-picker-popover {
+  position: "absolute";
+  z-index: "2";
+}
+
+.color-picker-cover {
+  position: "fixed";
+  top: "0px";
+  right: "0px";
+  bottom: "0px";
+  left: "0px";
+}
+
+.entity-color-label {
+  display: inline-block;
+  color: #666666;
+  font-size: 0.85em;
+  margin-bottom: 0.25em;
+}
