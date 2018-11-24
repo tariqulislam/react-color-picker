@@ -1,16 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { ChromePicker } from "react-color";
 
 import "./styles.css";
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       displayColorPicker: false,
-      defaultColor: "#999999",
-      changeColor: "#999999",
+      changeColor: "#9999999",
       color: {
         r: "0",
         g: "9",
@@ -19,67 +18,69 @@ class App extends React.Component {
       }
     };
   }
-  onHandleOpenColorPicker = () => {
-    this.setState({ displayColorPicker: !this.state.displayColorPicker });
+  onHandleShowColorPicker = () => {
+    this.setState({ displayColorPicker: true });
   };
   onHandleCloseColorPicker = () => {
     this.setState({ displayColorPicker: false });
   };
 
-  onPickerChange = color => {
+  onChangeColorPicker = color => {
     this.setState({ color: color.rgb, changeColor: color.hex });
-  };
-
-  onChangeColorValue = event => {
-    const value = event.target.value;
-    console.log(value);
-    if (value && value.length <= 7) {
-      this.setState({ changeColor: event.target.value });
-    } else {
-      this.setState({ changeColor: this.state.defaultColor });
-    }
+    //  this.props.onChangeColorInfo(color)
   };
 
   render() {
     return (
-      <div
-        style={{ marginTop: "10px" }}
-        className={"entity-color-picker-wrapper"}
-      >
-        <label className={"entity-color-label"}>Entity Color</label>
-        <div style={{ clear: "both" }} />
+      <div className={"color-picker-container"}>
+        <label>{this.props.title}</label>
+        <div style={this.props.labelStyle} />
         <div
-          style={{
-            backgroundColor: this.state.changeColor,
-            borderBottom: `1px solid ${this.state.changeColor}`
-          }}
-          className={"show-color"}
+          style={{ backgroundColor: this.state.changeColor }}
+          className={"color-picker-color-background"}
         />
-        <div className={"color-picker-container"}>
+        <div className={"color-text-with-popup"}>
           <input
+            readOnly
+            style={this.props.colorTextBoxStyle}
             className={"color-picker-text"}
             type="text"
+            name="color-picker-text"
             value={this.state.changeColor}
-            onChange={e => this.onChangeColorValue(e)}
-            onClick={() => this.onHandleOpenColorPicker()}
+            onClick={() => this.onHandleShowColorPicker()}
           />
-          {this.state.displayColorPicker ? (
-            <div className={"color-picker-popover"}>
+          {this.state.displayColorPicker && (
+            <div className={"color-picker-palette"}>
               <div
                 className={"color-picker-cover"}
-                onClick={this.onHandleCloseColorPicker}
+                onClick={() => this.onHandleCloseColorPicker()}
               />
               <ChromePicker
                 color={this.state.color}
-                onChange={this.onPickerChange}
+                onChange={this.onChangeColorPicker}
               />
             </div>
-          ) : null}
+          )}
         </div>
       </div>
     );
   }
 }
+
+App.defaultProps = {
+  defaultColor: "#999999",
+  title: "Color Picker",
+  labelStyle: {
+    paddingBottom: "7px",
+    fontSize: "11px"
+  },
+  colorTextBoxStyle: {
+    height: "35px",
+    border: "none",
+    borderBottom: "1px solid lightgray",
+    paddingLeft: "35px"
+  }
+};
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
