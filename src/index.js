@@ -4,10 +4,6 @@ import ColorPicker from "./ColorPicker";
 import "./styles.css";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   onColorPickerInfoChange = color => {
     console.log("Main Color Change", color);
   };
@@ -32,6 +28,7 @@ class App extends Component {
         title={styles.title}
         labelStyle={styles.labelStyle}
         colorTextBoxStyle={styles.colorTextBoxStyle}
+        pickerType={"Chrome"}
       />
     );
   }

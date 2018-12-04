@@ -1,5 +1,13 @@
 import React from "react";
-import { ChromePicker } from "react-color";
+import {
+  ChromePicker,
+  SketchPicker,
+  PhotoshopPicker,
+  GithubPicker,
+  TwitterPicker,
+  SwatchesPicker,
+  CompactPicker
+} from "react-color";
 
 export class ColorPicker extends React.Component {
   constructor(props) {
@@ -25,6 +33,66 @@ export class ColorPicker extends React.Component {
   onChangeColorPicker = color => {
     this.setState({ color: color.rgb, changeColor: color.hex });
     this.props.onColorChange(color);
+  };
+
+  generatePickerByType = type => {
+    if (type === "Chrome") {
+      return (
+        <ChromePicker
+          color={this.state.color}
+          onChange={this.onChangeColorPicker}
+        />
+      );
+    } else if (type === "Sketch") {
+      return (
+        <SketchPicker
+          color={this.state.color}
+          onChange={this.onChangeColorPicker}
+        />
+      );
+    } else if (type === "Photoshop") {
+      return (
+        <PhotoshopPicker
+          color={this.state.color}
+          onChange={this.onChangeColorPicker}
+        />
+      );
+    } else if (type === "Github") {
+      return (
+        <GithubPicker
+          color={this.state.color}
+          onChange={this.onChangeColorPicker}
+        />
+      );
+    } else if (type === "Twitter") {
+      return (
+        <TwitterPicker
+          color={this.state.color}
+          onChange={this.onChangeColorPicker}
+        />
+      );
+    } else if (type === "Swatches") {
+      return (
+        <SwatchesPicker
+          color={this.state.color}
+          onChange={this.onChangeColorPicker}
+        />
+      );
+    } else if (type === "Compact") {
+      return (
+        <CompactPicker
+          color={this.state.color}
+          onChange={this.onChangeColorPicker}
+        />
+      );
+    } else {
+      return (
+        <SketchPicker
+          color={this.state.color}
+          onChange={this.onChangeColorPicker}
+        />
+      );
+    }
   };
 
   render() {
@@ -55,10 +123,7 @@ export class ColorPicker extends React.Component {
                 className={"color-picker-cover"}
                 onClick={() => this.onHandleCloseColorPicker()}
               />
-              <ChromePicker
-                color={this.state.color}
-                onChange={this.onChangeColorPicker}
-              />
+              {this.generatePickerByType(this.props.pickerType || "Sketch")}
             </div>
           )}
         </div>
