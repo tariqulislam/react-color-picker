@@ -1,9 +1,10 @@
 {
-  "name": "new",
-  "version": "1.0.0",
+  "name": "react-color-picker-text",
+  "version": "1.0.2",
   "description": "",
-  "keywords": [],
+  "keywords": ["react color picker", "color picker", "Text Box"],
   "main": "src/index.js",
+  "author": "Tariqul Islam <tariqul.islam.rony@gmail.com>",
   "dependencies": {
     "react": "16.5.2",
     "react-color": "2.14.1",
