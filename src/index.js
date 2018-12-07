@@ -9,6 +9,8 @@ import {
   CompactPicker
 } from "react-color";
 
+import "./styles.css";
+
 export class ColorPicker extends React.Component {
   constructor(props) {
     super(props);
