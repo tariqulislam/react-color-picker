@@ -54,6 +54,7 @@ class App extends Component {
         labelStyle={styles.labelStyle}
         colorTextBoxStyle={styles.colorTextBoxStyle}
         pickerType={"Chrome"}
+        defaultColor={"#554"}
       />
     );
   }
@@ -137,5 +138,12 @@ Change the Type just add the props to `<ColorPicker >`
  pickerType={"Github"}
  />
 ```
+By Default This `<ColorPicker />` Initial Color is `Gray` or `#999999`
+Developer Can change this color by using `defaultColor` props in `<ColorPicker>`
 
+```javascript
+<ColorPicker
+   defaultColor={"#554"}
+/>
+```
 

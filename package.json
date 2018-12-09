@@ -1,6 +1,6 @@
 {
   "name": "react-color-picker-text",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "",
   "keywords": ["react color picker", "color picker", "Text Box"],
   "main": "src/index.js",

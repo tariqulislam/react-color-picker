@@ -103,7 +103,7 @@ export class ColorPicker extends React.Component {
         <label>{this.props.title || this.props.defaultTitle}</label>
         <div style={this.props.labelStyle || this.props.defaultLabelStyle} />
         <div
-          style={{ backgroundColor: this.state.changeColor }}
+          style={{ backgroundColor: this.props.defaultColor || this.state.changeColor }}
           className={"color-picker-color-background"}
         />
         <div className={"color-text-with-popup"}>
@@ -135,7 +135,6 @@ export class ColorPicker extends React.Component {
 }
 
 ColorPicker.defaultProps = {
-  defaultColor: "#999999",
   defaultTitle: "Color Picker",
   defaultLabelStyle: {
     paddingBottom: "7px",
